@@ -1,0 +1,8 @@
+com\cliente\rest\controllers\ClienteController.class
+com\cliente\rest\model\RegistroMercanciaDTO.class
+com\cliente\rest\model\util\dto\Constantes.class
+com\cliente\rest\model\ws\registro_mercancia.class
+com\cliente\rest\ClienteRestApplication.class
+com\cliente\rest\model\ws\cliente.class
+com\cliente\rest\controllers\RegistroMercanciaController.class
+com\cliente\rest\model\ClienteDTO.class

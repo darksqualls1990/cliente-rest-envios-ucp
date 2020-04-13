@@ -1,0 +1,97 @@
+<div id="editModal" class="modal fade" role="dialog"
+     data-th-fragment="default-form" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title"
+                    text="Nuevo registro de envio">NUEVO CLIENTE</h4>
+            </div>
+
+            <div data-th-fragment="default-form-data(tipo)">
+                <form id="userModalForm" name="userModalForm"
+                      th:action="@{/cliente/acciones/create}"
+                      th:object="${clienteDTO}" method="post">
+                    <!-- Campo de maniobra de mensajes de succes( modificacion, alta ...) -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label text="Cedula:">Cedula:</label>
+                                <input required="true" type="text" th:field="*{cedula}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Nombres:">Nombres:</label>
+                                <input required="true" type="text" th:field="*{nombres}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Apellidos:">Apellidos:</label>
+                                <input required="true" type="text" th:field="*{apellidos}"/>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+
+                                    <label text="Fecha Nacimiento:">Fecha de Nacimiento:</label>
+                                <div class="input-group date">
+                                    <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{fechaNacimiento}"/>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <div>
+                                        <label text="Lugar de Residencia:">Lugar de Residencia:</label>
+                                        <select required="true" class="form-control" id="idLugarResidencia"
+                                                th:field="*{lugarResidencia}">
+                                            <option th:value="'Chinchina'" th:text="Chinchina"></option>
+                                            <option th:value="'Ibague'" th:text="Ibague"></option>
+                                            <option th:value="'Manizales'" th:text="Manizales"></option>
+                                            <option th:value="'Pereira'" th:text="Pereira"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Telefono:">Telefono:</label>
+                                <input required="true" type="text" th:field="*{telefono}"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label text="Correo Electronico:">Correo Electronico:</label>
+                                <input required="true" type="text" th:field="*{correoElectronico}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <div>
+                                        <label text="Estado:">Estado:</label>
+                                        <select required="true" class="form-control" id="estadoSel"
+                                                th:field="*{estado}">
+                                            <option th:value="'A'" th:text="Activo"></option>
+                                            <option th:value="'I'" th:text="Inactivo"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- buttons -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button id="save-button" type="submit" class="btn btn-primary"
+                                value="new">
+							<span th:remove="tag">Guardar
+							</span><span class="glyphicon glyphicon-save"></span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

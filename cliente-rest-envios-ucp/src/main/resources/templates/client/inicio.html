@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${titulo}"></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.standalone.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${titulo}"></h1>
+
+    <form id="clienteFilter" class="form-inline"
+          name="clienteFilter" th:action="@{/cliente/filter}" th:object="${filtroBusqueda}"
+          method="post">
+        <div class="form-group">
+            <label text="Cedula">Cedula:</label>
+            <input type="text" th:field="*{cedula}"/>
+        </div>
+        <label>&nbsp;</label>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="action"
+                    value="find">
+                                <span text="Buscar Cliente"
+                                      th:remove="tag">Buscar Cliente</span><span
+                    class="glyphicon glyphicon-search"></span>
+            </button>
+        </div>
+        <label>&nbsp;</label>
+        <div class="form-group">
+            <button type="submit" value="new" name="action"
+                    class="btn btn-primary">
+                             <span text="Nuevo"
+                                   th:remove="tag">Nuevo </span><span
+                    class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+
+    </form>
+
+    <legend>
+        <label text="CLIENTE">CLIENTE</label>
+    </legend>
+    <div data-th-fragment="form-data" data-th-remove="tag">
+        <form id="formClient" th:action="@{/cliente/acciones/edit}"
+              name="formClient" th:object="${cliente}">
+            <div class="row">
+                <input id="idcedula" type="hidden"
+                       th:field="*{cedula}"/>
+                <input id="id" type="hidden"
+                       th:field="*{id}"/>
+                <div class="form-group col-md-3">
+                    <label text="Cedula:">Cedula:</label>
+                    <input th:disabled="true" type="text" th:field="*{cedula}"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label text="Nombres:">Nombres:</label>
+                    <input required="true" type="text" th:field="*{nombres}"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label text="Apellidos:">Apellidos:</label>
+                    <input required="true" type="text" th:field="*{apellidos}"/>
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label text="Fecha Nacimiento:">Fecha de Nacimiento:</label>
+                    <div class="input-group date">
+                        <input type="text" class="form-control" id="birthdate1" autocomplete="off" th:field="*{fechaNacimiento}"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <div>
+                        <div>
+                            <label text="Lugar de Residencia:">Lugar de Residencia:</label>
+                            <select required="true" class="form-control" id="idLugarResidencia1"
+                                    th:field="*{lugarResidencia}">
+                                <option th:value="'Chinchina'" th:text="Chinchina"></option>
+                                <option th:value="'Ibague'" th:text="Ibague"></option>
+                                <option th:value="'Manizales'" th:text="Manizales"></option>
+                                <option th:value="'Pereira'" th:text="Pereira"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label text="Telefono:">Telefono:</label>
+                    <input required="true" type="text" th:field="*{telefono}"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label text="Correo Electronico:">Correo Electronico:</label>
+                    <input required="true" type="text" th:field="*{correoElectronico}"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <div>
+                        <div>
+                            <label text="Estado:">Estado:</label>
+                            <select required="true" class="form-control" id="estadoSel1"
+                                    th:field="*{estado}">
+                                <option th:value="'A'" th:text="Activo"></option>
+                                <option th:value="'I'" th:text="Inactivo"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 float-xl-right">
+                    <div class="form-group float-xl-right ">
+                        <label>&nbsp;</label>
+                        <button type="submit" name="action" value="edit"
+                                class="btn btn-primary ">
+                             <span text="Modificar"
+                                   th:remove="tag">Modificar </span><span
+                                class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    <div data-th-fragment="edit-form" id="editModalHolder"></div>
+
+    <div data-layout-fragment="javascript">
+
+
+        <script type="text/javascript" src="/js/client.js"
+                data-th-src="@{/js/client.js}"
+                data-th-inline="javascript"></script>
+    </div>
+</div>
+</body>
+</html>

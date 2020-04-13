@@ -1,0 +1,95 @@
+<div id="editModal" class="modal fade" role="dialog"
+     data-th-fragment="default-form" tabindex="-1" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title"
+                    text="Nuevo registro de envio">NUEVO REGISTRO ENVIO</h4>
+            </div>
+
+            <div data-th-fragment="default-form-data(tipo)">
+                <form id="userModalForm" name="userModalForm"
+                      th:action="@{/registromercancia/acciones/create}"
+                      th:object="${registroMercanciaDTO}" method="post">
+                    <!-- Campo de maniobra de mensajes de succes( modificacion, alta ...) -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label text="Cedula Origen:">Cedula Cliente:</label>
+                                <input required="true" type="text" th:field="*{cedulaCliente}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Cedula Destinatario:">Cedula Destinatario:</label>
+                                <input required="true" type="text" th:field="*{cedulaDestinatario}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Nombre Destinatario:">Nombre Destinatario:</label>
+                                <input required="true"  type="text" th:field="*{nombreDestinatario}"/>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label text="Apellidos:">Apellidos Destinatario:</label>
+                                <input required="true" type="text" th:field="*{apellidoDestinatario}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <div>
+                                        <label text="Ciudad Origen:">Ciudad Origen:</label>
+                                        <select required="true" class="form-control" th:field="*{ciudadOrigen}">
+                                            <option th:value="'Chinchina'" th:text="Chinchina"></option>
+                                            <option th:value="'Ibague'" th:text="Ibague"></option>
+                                            <option th:value="'Manizales'" th:text="Manizales"></option>
+                                            <option th:value="'Pereira'" th:text="Pereira"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div>
+                                    <div>
+                                        <label text="Ciudad Destino:">Ciudad Destino:</label>
+                                        <select required="true" class="form-control" th:field="*{ciudadDestino}">
+                                            <option th:value="'Chinchina'" th:text="Chinchina"></option>
+                                            <option th:value="'Ibague'" th:text="Ibague"></option>
+                                            <option th:value="'Manizales'" th:text="Manizales"></option>
+                                            <option th:value="'Pereira'" th:text="Pereira"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label text="Peso Paquete:">Peso Paquete (KI):</label>
+                                <input type="number" min="1" th:field="*{pesoPaquete}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Valor Asegurado:">Valor Asegurado:</label>
+                                <input type="number" min="1" th:field="*{valorAsegurado}"/>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label text="Valor Envio:">Valor Envio:</label>
+                                <input th:disabled="true" type="text" th:field="*{valorNumerico}"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- buttons -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button id="save-button" type="submit" class="btn btn-primary"
+                               value="new">
+							<span  th:remove="tag">Guardar
+							</span><span class="glyphicon glyphicon-save"></span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
